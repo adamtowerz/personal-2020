@@ -87,6 +87,10 @@ ul {
   padding-left: 1rem;
 }
 
+li {
+  color: var(--text-color);
+}
+
 .backbtn {
   position: fixed;
   color: var(--side-bar-text-color);

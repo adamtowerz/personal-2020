@@ -89,9 +89,9 @@
 
 .tag {
   padding: 4px 12px;
-  margin: 4px 4px;
-  border: 2px solid #dadada;
-  background-color: #dadada;
+  margin: 2px 4px;
+  border: 1px solid var(--text-color);
+  color: var(--text-color);
   border-radius: 16px;
   font-size: var(--small-text);
 }

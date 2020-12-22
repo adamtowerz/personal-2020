@@ -9,7 +9,10 @@
   margin: 0 0.5rem;
 }
 
-.li:first-child,
+.li:first-child {
+  margin-left: 0;
+}
+
 .li:last-child {
-  margin: 0;
+  margin-right: 0;
 }

@@ -7,7 +7,7 @@ import renderToString from "next-mdx-remote/render-to-string";
 import { GetStaticProps } from "next";
 import Airtable from "airtable";
 import type { FeedItem } from "../types";
-import CardList from "../components/index/CardList";
+import Feed from "../components/index/Feed";
 
 export const getStaticProps: GetStaticProps = async () => {
   const airtable = new Airtable({
@@ -44,6 +44,7 @@ export const getStaticProps: GetStaticProps = async () => {
           "image",
           "link",
           "link_label",
+          "tags",
         ],
       })
       .all(),
@@ -58,9 +59,10 @@ export const getStaticProps: GetStaticProps = async () => {
         tag_line: feedItem.get("tag_line"),
         desc: md_desc,
         time_desc: feedItem.get("time_desc"),
-        image: feedItem.get("image")[0].url,
-        link: feedItem.get("link"),
+        image: feedItem.get("image")?.[0]?.url ?? false,
+        link: feedItem.get("link") ?? false,
         link_label: feedItem.get("link_label") ?? "Learn More",
+        tags: feedItem.get("tags") ?? [],
       };
     })
   );
@@ -74,9 +76,10 @@ export const getStaticProps: GetStaticProps = async () => {
         tag_line: feedItem.get("tag_line"),
         desc: md_desc,
         time_desc: feedItem.get("time_desc"),
-        image: feedItem.get("image")[0].url,
-        link: feedItem.get("link"),
+        image: feedItem.get("image")?.[0]?.url ?? false,
+        link: feedItem.get("link") ?? false,
         link_label: feedItem.get("link_label") ?? "Learn More",
+        tags: feedItem.get("tags") ?? [],
       };
     })
   );
@@ -115,15 +118,15 @@ export default function Home({ currentFeed, historyFeed }: Props) {
           <hr />
 
           <section>
-            <h2>What I'm currently up to</h2>
-            <CardList feed={currentFeed} />
+            <h2>What I'm up to</h2>
+            <Feed feed={currentFeed} />
           </section>
 
           <hr />
 
           <section>
             <h2>What I've been up to</h2>
-            <CardList feed={historyFeed} />
+            <Feed feed={historyFeed} />
           </section>
 
           <hr />

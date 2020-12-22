@@ -5,6 +5,18 @@ import hydrate from "next-mdx-remote/hydrate";
 import type { FeedItem } from "../../types";
 import styles from "./Card.module.css";
 
+type Props = Pick<
+  FeedItem,
+  | "title"
+  | "tag_line"
+  | "time_desc"
+  | "desc"
+  | "image"
+  | "link"
+  | "link_label"
+  | "tags"
+>;
+
 const Card = ({
   title,
   tag_line,
@@ -14,7 +26,7 @@ const Card = ({
   link,
   link_label,
   tags,
-}: FeedItem) => {
+}: Props) => {
   const [active, setActive] = useState(false);
   const content = hydrate(desc);
   return (
@@ -26,7 +38,14 @@ const Card = ({
     >
       <div className={styles.titleRow}>
         <div className={styles.imageContainer}>
-          <Image className={styles.image} src={image} width={64} height={64} />
+          {image && (
+            <Image
+              className={styles.image}
+              src={image}
+              width={64}
+              height={64}
+            />
+          )}
         </div>
         <div className={styles.titlebox}>
           <h3 className={styles.title}>{title}</h3>
@@ -48,7 +67,7 @@ const Card = ({
             </div>
           )}
           <div className={styles.longDesc}>{content}</div>
-          {active && (
+          {link && (
             <a className={styles.link} href={link}>
               {link_label}
             </a>
