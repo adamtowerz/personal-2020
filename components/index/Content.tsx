@@ -11,9 +11,9 @@ const Content = () => {
       </p>
 
       <p>
-        Currently, I am a senior at the University of Washington, Seattle,
-        studying computer science and entrepreneurship. Over the last 3 years of
-        college I’ve founded (and failed at){" "}
+        I'm a senior at the University of Washington, Seattle, studying computer
+        science and entrepreneurship. Over the last 3 years of college I’ve
+        founded{" "}
         <Popover
           popoverContent={
             <div>
