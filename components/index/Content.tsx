@@ -4,9 +4,9 @@ const Content = () => {
   return (
     <>
       <p>
-        <b>
-          I code, love mountain sports, and am too competitive at board games.
-        </b>
+        <b>I code, love mountain sports, and will beat you at Mario Kart.</b>
+        <br />
+        <i>(that might also be my tinder bio..)</i>
       </p>
 
       <p>
@@ -82,7 +82,7 @@ const Content = () => {
         <Popover popoverContent={<i>don't tell my parents..</i>}>
           brewed moonshine in my dorm room freezer
         </Popover>
-        . I also run the technology team at{" "}
+        . I also ran the technology team at{" "}
         <Popover
           popoverContent={
             <div>
@@ -263,9 +263,9 @@ const Content = () => {
                 platform.
               </p>
               <p>
-                Working here has validated my hypothesis that I would thoroughly
-                enjoy working at a small and fast paced environment. I have an
-                unparalleled amout of ownership over my work, and am shipping
+                Working there validated my hypothesis that I would thoroughly
+                enjoy working in a small and fast paced environment. I had an
+                unparalleled amout of ownership over my work, and was shipping
                 new things frequently.
               </p>
             </div>
