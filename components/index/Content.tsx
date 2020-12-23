@@ -6,7 +6,7 @@ const Content = () => {
       <p>
         <b>I code, love mountain sports, and will beat you at Mario Kart.</b>
         <br />
-        <i>(that might also be my tinder bio..)</i>
+        <i>(that might also be my tinder bio...)</i>
       </p>
 
       <p>
