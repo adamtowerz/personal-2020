@@ -5,8 +5,7 @@ const Content = () => {
     <>
       <p>
         <b>
-          I’m endlessly enthused by problems that keep me constantly learning
-          and opportunities that empower me to make an outsized impact.
+          I code, love mountain sports, and am too competitive at board games.
         </b>
       </p>
 
