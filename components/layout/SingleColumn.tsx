@@ -5,9 +5,11 @@ import styles from "./SingleColumn.module.scss";
 
 const SingleColumn = ({
   header = true,
+  footer = true,
   children,
 }: {
   header?: boolean;
+  footer?: boolean;
   children: React.ReactElement;
 }) => {
   return (
@@ -26,11 +28,13 @@ const SingleColumn = ({
           </header>
         )}
         <main className={styles.content}>{children}</main>
-        <footer>
-          <hr />
+        {footer && (
+          <footer>
+            <hr />
 
-          <Socials />
-        </footer>
+            <Socials />
+          </footer>
+        )}
       </div>
     </>
   );

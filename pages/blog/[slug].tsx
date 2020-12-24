@@ -30,7 +30,7 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
     apiKey: process.env.AIRTABLE_KEY,
   });
   const post = await getPostData(airtable, params.slug as string);
-  return { props: { post }, revalidate: 60 * 3 };
+  return { props: { post }, revalidate: 45 };
 };
 
 export const getStaticPaths: GetStaticPaths = async () => {
