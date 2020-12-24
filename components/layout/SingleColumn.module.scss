@@ -1,0 +1,23 @@
+.singleCol {
+  max-width: 800px;
+
+  padding-top: 4rem;
+  margin: 0 1rem;
+
+  main {
+    margin: 1rem 0;
+  }
+
+  footer {
+    padding-bottom: 4rem;
+  }
+}
+
+.titlebox {
+  margin-bottom: 1rem;
+}
+
+.titlebox > h1 {
+  margin-bottom: 0;
+  white-space: nowrap;
+}

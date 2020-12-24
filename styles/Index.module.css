@@ -1,18 +1,1 @@
-main.index {
-  max-width: 800px;
 
-  margin-top: 4rem;
-}
-
-.titlebox {
-  margin-bottom: 1rem;
-}
-
-.titlebox > h1 {
-  margin-bottom: 0;
-  white-space: nowrap;
-}
-
-.content {
-  margin: 1rem;
-}

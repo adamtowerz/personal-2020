@@ -12,9 +12,13 @@ type Props = {
 const Feed = ({ feed }: Props) => {
   return (
     <div className={styles.list}>
-      {feed.map(({ type, ...item }) =>
-        type === FeedItemType.Moment ? <Moment {...item} /> : <Card {...item} />
-      )}
+      {feed.map((item) => {
+        if (item.type === FeedItemType.Moment) {
+          return <Moment {...item} />;
+        } else {
+          return <Card {...item} />;
+        }
+      })}
     </div>
   );
 };

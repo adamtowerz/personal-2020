@@ -2,20 +2,8 @@ import React, { useState } from "react";
 import classNames from "classnames";
 import Image from "next/image";
 import hydrate from "next-mdx-remote/hydrate";
-import type { FeedItem } from "../../types";
+import type { Achievement, Employment, Project } from "../../types";
 import styles from "./Card.module.css";
-
-type Props = Pick<
-  FeedItem,
-  | "title"
-  | "tag_line"
-  | "time_desc"
-  | "desc"
-  | "image"
-  | "link"
-  | "link_label"
-  | "tags"
->;
 
 const Card = ({
   title,
@@ -26,7 +14,7 @@ const Card = ({
   link,
   link_label,
   tags,
-}: Props) => {
+}: Employment | Project | Achievement) => {
   const [active, setActive] = useState(false);
   const content = hydrate(desc);
   return (
