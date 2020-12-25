@@ -27,20 +27,18 @@ type Props = {
 
 export default function Home({ currentFeed, historyFeed }: Props) {
   return (
-    <SingleColumn>
-      <>
-        <Content />
-        <hr />
-        <section>
-          <h2>What I'm up to</h2>
-          <Feed feed={currentFeed} />
-        </section>
-        <hr />
-        <section>
-          <h2>What I've been up to</h2>
-          <Feed feed={historyFeed} />
-        </section>
-      </>
+    <SingleColumn header footer>
+      <Content />
+      <hr />
+      <section>
+        <h2>What I'm up to</h2>
+        <Feed feed={currentFeed} />
+      </section>
+      <hr />
+      <section>
+        <h2>What I've been up to</h2>
+        <Feed feed={historyFeed} />
+      </section>
     </SingleColumn>
   );
 }

@@ -44,11 +44,18 @@ export enum FeedItemType {
   Achievement = "achievement",
 }
 
-export interface BlogPost {
+export type BlogPostStatus = "published" | "unlisted" | "private";
+
+export interface BlogPostMeta {
   slug: string;
-  status: "published" | "unlisted" | "private";
+  status: BlogPostStatus;
   title: string;
   date_release?: string;
   date_edit?: string;
+  date_release_desc?: string;
+  date_edit_desc?: string;
+}
+
+export interface BlogPost extends BlogPostMeta {
   content: string;
 }
