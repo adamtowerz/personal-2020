@@ -42,6 +42,9 @@ const SingleColumn: React.FC<Props> = ({
       <Head>
         <title>{title}</title>
         <link rel="icon" href="/favicon.ico" />
+        <meta property="og:title" content={title} />
+        <meta property="og:site_name" content="Adam Towers" />
+        <meta property="og:author" content="Adam Towers" />
       </Head>
       {headerForRender}
       <main className={styles.content}>{children}</main>
