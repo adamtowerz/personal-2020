@@ -45,6 +45,9 @@ const SingleColumn: React.FC<Props> = ({
         <meta property="og:title" content={title} />
         <meta property="og:site_name" content="Adam Towers" />
         <meta property="og:author" content="Adam Towers" />
+        <meta name="twitter:card" content="summary" />
+        <meta property="twitter:site" content="@adamtowerz" />
+        <meta property="twitter:creator" content="@adamtowerz" />
       </Head>
       {headerForRender}
       <main className={styles.content}>{children}</main>
