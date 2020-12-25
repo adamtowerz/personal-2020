@@ -1,4 +1,4 @@
-import { GetServerSidePropsContext } from "next";
+import { GetServerSideProps } from "next";
 import { useState } from "react";
 import Button from "@/components/Button";
 import Input from "@/components/Input";
@@ -10,22 +10,15 @@ import { BlogPost, BlogPostStatus } from "types";
 import Textarea from "@/components/Textarea";
 import Select from "@/components/Select";
 import styles from "./[slug].module.scss";
-import ErrorPage from "@/components/ErrorPage";
+import { isWriteEnabled } from "@/utils/server";
 
 type Props = {
   post: BlogPost;
-  error: number;
 };
 
 const BLOG_STATUSES: BlogPostStatus[] = ["published", "private", "unlisted"];
 
-export default function EditPost({ post, error }: Props) {
-  if (error) {
-    return (
-      <ErrorPage errorTitle="An error occured, likely the post you're looking for does not exist" />
-    );
-  }
-
+export default function EditPost({ post }: Props) {
   const [originalPost, setOriginalPost] = useState(post);
   const [title, setTitle] = useState(post.title);
   const handleTitleChange = (e: any) => setTitle(e.target.value);
@@ -70,6 +63,7 @@ export default function EditPost({ post, error }: Props) {
 
   return (
     <SingleColumn
+      title="Blog Post Editor"
       headerNode={
         <header className={styles.header}>
           <h1>Edit Post</h1>
@@ -113,10 +107,15 @@ export default function EditPost({ post, error }: Props) {
   );
 }
 
-export async function getServerSideProps({
-  res,
+export const getServerSideProps: GetServerSideProps<Props> = async ({
   params,
-}: GetServerSidePropsContext) {
+}) => {
+  if (!isWriteEnabled()) {
+    return {
+      notFound: true,
+    };
+  }
+
   const airtable = new Airtable({
     apiKey: process.env.AIRTABLE_KEY,
   });
@@ -124,11 +123,8 @@ export async function getServerSideProps({
     const post = await getPostData(airtable, params.slug as string, false);
     return { props: { post } };
   } catch (e) {
-    res.statusCode = 404;
     return {
-      props: {
-        error: 404,
-      },
+      notFound: true,
     };
   }
-}
+};

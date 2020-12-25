@@ -8,7 +8,7 @@ import SingleColumn from "../../components/layout/SingleColumn";
 export default function Post({ post }: { post: BlogPost }) {
   const content = hydrate(post.content);
   return (
-    <SingleColumn footer>
+    <SingleColumn title={post.title} footer>
       <article>
         <h1>{post.title}</h1>
         {post.date_release_desc && (
@@ -27,8 +27,14 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
   const airtable = new Airtable({
     apiKey: process.env.AIRTABLE_KEY,
   });
-  const post = await getPostData(airtable, params.slug as string);
-  return { props: { post }, revalidate: 45 };
+  try {
+    const post = await getPostData(airtable, params.slug as string);
+    return { props: { post }, revalidate: 45 };
+  } catch (e) {
+    return {
+      notFound: true,
+    };
+  }
 };
 
 export const getStaticPaths: GetStaticPaths = async () => {

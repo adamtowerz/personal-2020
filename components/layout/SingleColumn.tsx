@@ -9,6 +9,7 @@ type Props = {
   header?: boolean;
   headerNode?: ReactNode;
   footer?: boolean;
+  title?: string;
 };
 
 const DEFAULT_HEADER = (
@@ -20,11 +21,14 @@ const DEFAULT_HEADER = (
   </header>
 );
 
+const DEFAULT_PAGE_TITLE = "Adam Towers";
+
 const SingleColumn: React.FC<Props> = ({
   header,
   footer,
   children,
   headerNode,
+  title = DEFAULT_PAGE_TITLE,
 }) => {
   let headerForRender = null;
   if (headerNode) {
@@ -36,7 +40,7 @@ const SingleColumn: React.FC<Props> = ({
   return (
     <div className={styles.singleCol}>
       <Head>
-        <title>Adam Towers</title>
+        <title>{title}</title>
         <link rel="icon" href="/favicon.ico" />
       </Head>
       {headerForRender}

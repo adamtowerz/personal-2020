@@ -4,7 +4,7 @@ import styles from "./404.module.scss";
 
 const Page404 = () => {
   return (
-    <SingleColumn footer>
+    <SingleColumn title="404 | Adam Towers" footer>
       <div className={styles.container}>
         <h1>404: Page not found</h1>
         <Link href="/">

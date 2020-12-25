@@ -5,6 +5,7 @@ import SingleColumn from "@/components/layout/SingleColumn";
 import NewPost from "@/components/editor/NewPost";
 import PostList from "@/components/editor/PostList";
 import type { BlogPostMeta } from "types";
+import { isWriteEnabled } from "@/utils/server";
 
 type Props = {
   posts: BlogPostMeta[];
@@ -12,7 +13,7 @@ type Props = {
 
 export default function Editor({ posts }: Props) {
   return (
-    <SingleColumn>
+    <SingleColumn title="Blog Editor | Adam Towers">
       <h1>Editor</h1>
       <NewPost />
       <PostList posts={posts} />
@@ -21,6 +22,12 @@ export default function Editor({ posts }: Props) {
 }
 
 export const getStaticProps: GetStaticProps = async () => {
+  if (!isWriteEnabled()) {
+    return {
+      notFound: true,
+    };
+  }
+
   const airtable = new Airtable({
     apiKey: process.env.AIRTABLE_KEY,
   });
