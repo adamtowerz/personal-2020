@@ -1,0 +1,13 @@
+.chessboard {
+  border-radius: 3px;
+  position: relative;
+}
+
+.tile {
+  position: absolute;
+}
+
+.piece {
+  position: absolute;
+  background-size: cover;
+}
