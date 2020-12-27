@@ -12,7 +12,7 @@ type Props = {
   title?: string;
 };
 
-const DEFAULT_HEADER = (
+export const DEFAULT_HEADER = (
   <header className={styles.titlebox}>
     <h1>
       Heya, I'm <b>Adam</b>

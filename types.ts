@@ -59,3 +59,10 @@ export interface BlogPostMeta {
 export interface BlogPost extends BlogPostMeta {
   content: string;
 }
+
+export type Banner = {
+  title: string;
+  subtitle: string;
+  link: string;
+  link_label: string;
+};
